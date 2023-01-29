@@ -1,7 +1,7 @@
 FROM php:8.2-fpm-alpine
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-RUN apk add --no-cache wget openssh-client git zip curl nginx
+RUN apk add --no-cache --update wget openssh-client git zip curl nginx nodejs npm
 
 RUN mkdir -p /app
 RUN mkdir -p /app/public
