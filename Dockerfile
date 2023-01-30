@@ -10,6 +10,8 @@ RUN echo '<html><head><meta name="robots" content="noindex"></head><body><h1>Woo
 COPY .deployment/nginx.conf /etc/nginx/nginx.conf
 COPY .deployment/php-opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY .deployment/docker-php-memlimit.ini /usr/local/etc/php/conf.d/docker-php-memlimit.ini
+COPY .deployment/startup.sh /startup.sh
+
 
 RUN apk add --no-cache bind-tools \
   && ssh-keyscan github.com > /etc/ssh/ssh_known_hosts \
@@ -24,4 +26,4 @@ RUN chown -R www-data: /app
 WORKDIR /app
 
 EXPOSE 8888
-CMD sh /app/.deployment/startup.sh
+CMD sh /startup.sh
