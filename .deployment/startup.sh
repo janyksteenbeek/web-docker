@@ -2,8 +2,8 @@
 
 ARTISAN_FILE="/app/artisan"
 
-# Check if artisan exists and is executable
-if [[ -x "$(command -v php)" && -x "${ARTISAN_FILE}" ]]; then
+# Check if PHP-CLI is installed and if artisan exists
+if [[ -x "$(command -v php)" && -f "${ARTISAN_FILE}" ]]; then
     # Check if SKIP_OPTIMIZE_COMMANDS is NOT set
     if [[ -z "${SKIP_OPTIMIZE_COMMANDS}" ]]; then
         echo "Running artisan commands for production environment..."
@@ -16,8 +16,16 @@ if [[ -x "$(command -v php)" && -x "${ARTISAN_FILE}" ]]; then
     else
         echo "Skipping optimization commands due to the SKIP_OPTIMIZE_COMMANDS environment variable."
     fi
+    if [[ -z "${SKIP_STORAGE_LINK}" ]]; then
+        echo "Symlinking public storage..."
+
+        # Run recommended artisan commands for production
+        php ${ARTISAN_FILE} storage:link --force
+    else
+        echo "Skipping public storage linking due to the SKIP_STORAGE_LINK environment variable."
+    fi
 else
-    echo "Artisan or PHP not found. Skipping optimization commands."
+    echo "Artisan or PHP not found. Skipping production initialization commands."
 fi
 
 
