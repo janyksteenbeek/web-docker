@@ -19,7 +19,7 @@ RUN apk add --no-cache bind-tools \
   && apk del bind-tools
 
 RUN chmod +x /usr/local/bin/install-php-extensions && \
-    IPE_GD_WITHOUTAVIF=1 install-php-extensions pdo_mysql exif pcntl bcmath redis soap gd opcache intl
+    IPE_GD_WITHOUTAVIF=1 install-php-extensions pdo_mysql exif pcntl bcmath redis soap gd opcache intl zip
 
 RUN chown -R www-data: /app
 
