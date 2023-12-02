@@ -8,6 +8,6 @@ The following packages are present in this container, which has been based
 on Alpine.
 
  - nginx
- - PHP 8.2
+ - PHP 8.3
  - PHP extensions: `pdo_mysql` `exif` `pcntl` `bcmath` `redis` `soap` `gd` `opcache`
  - Additional packages: `wget` `openssh-client` `git` `zip` `curl`
