@@ -9,8 +9,7 @@ RUN mkdir -p /app
 RUN mkdir -p /app/public
 RUN echo '<html><head><meta name="robots" content="noindex"></head><body><h1>Woohoo! :)</h1><h3>It works!</h3></body>' > '/app/public/index.php'
 
-RUN apt install ssh -y \
-  && ssh-keyscan github.com > /etc/ssh/ssh_known_hosts \
+RUN ssh-keyscan github.com > /etc/ssh/ssh_known_hosts \
   && dig -t a +short github.com | grep ^[0-9] | xargs -r -n1 ssh-keyscan >> /etc/ssh/ssh_known_hosts
 
 RUN chown -R www-data: /app
