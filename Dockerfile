@@ -4,6 +4,8 @@ RUN apt update -y
 RUN apt install -y wget openssh-client git zip curl nginx nodejs npm
 RUN IPE_GD_WITHOUTAVIF=1 install-php-extensions pdo_mysql exif pcntl bcmath redis soap gd opcache intl zip
 
+RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
+RUN sed -i 's/memory_limit = .*/memory_limit = '1G'/' $PHP_INI_DIR/php.ini
 
 RUN mkdir -p /app
 RUN mkdir -p /app/public
