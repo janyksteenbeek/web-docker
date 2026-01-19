@@ -1,6 +1,7 @@
 FROM dunglas/frankenphp
 
 RUN apt update -y
+RUN apt upgrade -y
 RUN apt install -y wget openssh-client git zip curl nodejs npm vim
 RUN IPE_GD_WITHOUTAVIF=1 install-php-extensions pdo_mysql exif pcntl bcmath redis soap gd opcache intl zip
 
