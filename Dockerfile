@@ -7,6 +7,7 @@ RUN IPE_GD_WITHOUTAVIF=1 install-php-extensions pdo_mysql exif pcntl bcmath redi
 
 RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 RUN sed -i 's/memory_limit = .*/memory_limit = '1G'/' $PHP_INI_DIR/php.ini
+RUN sed -i 's/^;*session.upload_progress.enabled = .*/session.upload_progress.enabled = Off/' $PHP_INI_DIR/php.ini
 
 RUN mkdir -p /app
 RUN mkdir -p /app/public
