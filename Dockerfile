@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:1-php8.5
+FROM dunglas/frankenphp:1.13.6-php8.5
 
 RUN apt update -y
 RUN apt upgrade -y
