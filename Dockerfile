@@ -1,4 +1,4 @@
-FROM php:8.5.13-fpm-alpine
+FROM php:8.6.0RC7-fpm-alpine
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN apk add --no-cache --update wget openssh-client git zip curl nginx nodejs npm
